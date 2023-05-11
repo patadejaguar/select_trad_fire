@@ -16,7 +16,7 @@
 
 browser.contextMenus.create({
         id: "traduire",
-        title: "traduire",
+        title: "Traducir",
         contexts: ["selection"]
 });
 
@@ -39,7 +39,7 @@ function getFirstWord(str) {
 function updateMenu(message) {
         var text = getFirstWord(message.selection);
         browser.contextMenus.update("traduire", {
-               title: "traduire: \"" + text + "\""});
+               title: "Traducción: \"" + text + "\""});
         console.log("[select_trad.js] updateMenu: " + text);
         browser.contextMenus.refresh();
 }
@@ -48,7 +48,7 @@ browser.contextMenus.onClicked.addListener((info, tab) => {
         if (info.menuItemId === "traduire") {
                 var text = getFirstWord(info.selectionText);
                 console.log("[select_trad.js] onClicked: " + text);
-                var wordrefUrl = "http://www.wordreference.com/redirect/translation.aspx?w=" + text + "&dict=enfr";
+                var wordrefUrl = "http://www.wordreference.com/redirect/translation.aspx?w=" + text + "&dict=enes";
                 browser.tabs.create({
                         url: wordrefUrl
                 });
